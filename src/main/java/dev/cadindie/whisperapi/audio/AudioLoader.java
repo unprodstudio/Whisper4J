@@ -189,9 +189,12 @@ public final class AudioLoader {
 
     /**
      * Converts 16-bit signed little-endian PCM bytes to float32 samples
-     * normalised to the range [-1.0, 1.0].
+     * normalized to the range [-1.0, 1.0].
+     *
+     * @param pcm the byte[] formatted packet
+     * @return the converted audio
      */
-    public static float[] pcm16ToFloat(byte[] pcm) {
+    public static float[] pcm16AsByteToFloat(byte[] pcm) {
         int samples = pcm.length / 2;
         float[] result = new float[samples];
         ByteBuffer bb = ByteBuffer.wrap(pcm).order(ByteOrder.LITTLE_ENDIAN);
@@ -199,6 +202,47 @@ public final class AudioLoader {
         for (int i = 0; i < samples; i++) {
             short s = bb.getShort();
             result[i] = s / 32768.0f; // normalize to [-1, 1]
+        }
+
+        return result;
+    }
+
+    /**
+     * Converts 16-bit signed little-endian PCM bytes to float32 samples
+     * normalized to the range [-1.0, 1.0].
+     *
+     * @param pcm the double[] formatted packet
+     * @return the converted audio
+     */
+    public static float[] pcm16AsDoubleToFloat(double[] pcm) {
+        float[] result = new float[pcm.length];
+
+        for (int i = 0; i < pcm.length; i++) {
+            double d = pcm[i];
+
+            // Clamp to [-1.0, 1.0] just in case
+            if (d > 1.0) d = 1.0;
+            else if (d < -1.0) d = -1.0;
+
+            result[i] = (float) d;
+        }
+
+        return result;
+    }
+
+    /**
+     * Converts 16-bit signed little-endian PCM bytes to float32 samples
+     * normalized to the range [-1.0, 1.0].
+     *
+     * @param pcm the short[] formatted packet
+     * @return the converted audio
+     */
+    public static float[] pcm16AsShortToFloat(short[] pcm) {
+        float[] result = new float[pcm.length];
+        final float scale = 1.0f / 32768.0f;
+
+        for (int i = 0; i < pcm.length; i++) {
+            result[i] = pcm[i] * scale;
         }
 
         return result;

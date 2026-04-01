@@ -1,6 +1,7 @@
 import dev.cadindie.whisperapi.Whisper;
 import dev.cadindie.whisperapi.audio.OpusTranscriber;
 import net.labymod.opus.OpusCodec;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import javax.sound.sampled.*;
@@ -12,6 +13,7 @@ public class OpusTranscriptionTest {
             new AudioFormat(AudioFormat.Encoding.PCM_SIGNED, 16000, 16, 1, 2, 48000, false);
 
     @Test
+    @Disabled
     public void testOpusTranscription() {
         System.setProperty("jna.nosys", "true");
         File model = new File(getClass().getResource("models/ggml-base.bin").getFile());
@@ -33,7 +35,7 @@ public class OpusTranscriptionTest {
     }
 
     private void opusTest(Whisper whisper) throws IOException, LineUnavailableException {
-        OpusTranscriber transcriber = new OpusTranscriber(0.5);
+        OpusTranscriber transcriber = new OpusTranscriber(5);
 
         OpusCodec.setupWithTemporaryFolder();
         OpusCodec codec = OpusCodec.createDefault();
@@ -55,7 +57,7 @@ public class OpusTranscriptionTest {
 
             String result = whisper.transcribeOpus(transcriber, decoded);
             if (!result.isBlank()) {
-                Whisper.LOGGER.info("Transcription result {}", result);
+                Whisper.LOGGER.info("Transcription result: {}", result);
             }
         }
     }

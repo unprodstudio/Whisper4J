@@ -3,7 +3,6 @@ package dev.cadindie.whisperapi;
 import dev.cadindie.whisperapi.audio.AudioLoader;
 import dev.cadindie.whisperapi.audio.OpusTranscriber;
 import io.github.ggerganov.whispercpp.WhisperCpp;
-import io.github.ggerganov.whispercpp.WhisperCppJnaLibrary;
 import io.github.ggerganov.whispercpp.params.WhisperFullParams;
 import io.github.ggerganov.whispercpp.params.WhisperSamplingStrategy;
 import org.slf4j.Logger;

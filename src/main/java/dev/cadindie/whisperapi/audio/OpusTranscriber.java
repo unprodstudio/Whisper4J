@@ -19,7 +19,7 @@ public class OpusTranscriber {
     }
 
     public String transcribeOpusPacket(Whisper whisper, byte[] packet) {
-        float[] samples = AudioLoader.pcm16ToFloat(packet);
+        float[] samples = AudioLoader.pcm16AsByteToFloat(packet);
 
         buffer.add(samples);
         totalSamples += samples.length;

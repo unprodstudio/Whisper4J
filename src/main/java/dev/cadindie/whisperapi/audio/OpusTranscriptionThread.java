@@ -18,7 +18,6 @@ public class OpusTranscriptionThread implements Runnable {
     }
 
     public String getTranscription() {
-        Whisper.LOGGER.info("Debug result {}", value);
         return value;
     }
 }

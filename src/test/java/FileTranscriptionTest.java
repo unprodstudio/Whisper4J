@@ -9,8 +9,8 @@ public class FileTranscriptionTest {
     @Test
     public void testWAVTranscription() {
         System.setProperty("jna.nosys", "true");
-        File model = new File(getClass().getResource("models/ggml-base.bin").getFile());
-        File sample = new File(getClass().getResource("samples/sample.wav").getFile());
+        File model = new File(getClass().getResource("/models/ggml-base.bin").getFile());
+        File sample = new File(getClass().getResource("/samples/sample.wav").getFile());
         Whisper whisper = new Whisper.Builder()
                 .setModel(model)
                 .setLanguage("en")
