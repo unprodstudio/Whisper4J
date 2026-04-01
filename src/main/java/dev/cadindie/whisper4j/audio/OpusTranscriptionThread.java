@@ -1,6 +1,6 @@
-package dev.cadindie.whisperapi.audio;
+package dev.cadindie.whisper4j.audio;
 
-import dev.cadindie.whisperapi.Whisper;
+import dev.cadindie.whisper4j.Whisper;
 
 public class OpusTranscriptionThread implements Runnable {
     Whisper whisper;

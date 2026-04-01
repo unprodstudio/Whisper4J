@@ -1,7 +1,7 @@
-package dev.cadindie.whisperapi;
+package dev.cadindie.whisper4j;
 
-import dev.cadindie.whisperapi.audio.AudioLoader;
-import dev.cadindie.whisperapi.audio.OpusTranscriber;
+import dev.cadindie.whisper4j.audio.AudioLoader;
+import dev.cadindie.whisper4j.audio.OpusTranscriber;
 import io.github.ggerganov.whispercpp.WhisperCpp;
 import io.github.ggerganov.whispercpp.params.WhisperFullParams;
 import io.github.ggerganov.whispercpp.params.WhisperSamplingStrategy;

@@ -1,1 +1,1 @@
-rootProject.name = "WhisperAPI"
+rootProject.name = "Whisper4J"

@@ -1,4 +1,4 @@
-import dev.cadindie.whisperapi.Whisper;
+import dev.cadindie.whisper4j.Whisper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

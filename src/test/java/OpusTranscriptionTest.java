@@ -1,5 +1,5 @@
-import dev.cadindie.whisperapi.Whisper;
-import dev.cadindie.whisperapi.audio.OpusTranscriber;
+import dev.cadindie.whisper4j.Whisper;
+import dev.cadindie.whisper4j.audio.OpusTranscriber;
 import net.labymod.opus.OpusCodec;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;

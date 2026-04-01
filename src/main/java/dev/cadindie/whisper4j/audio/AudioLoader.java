@@ -1,4 +1,4 @@
-package dev.cadindie.whisperapi.audio;
+package dev.cadindie.whisper4j.audio;
 
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
