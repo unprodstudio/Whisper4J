@@ -1,10 +1,14 @@
 plugins {
     id("java")
     id("com.gradleup.shadow") version "9.4.0"
+    `maven-publish`
 }
 
 group = "dev.cadindie"
-version = "1.0-SNAPSHOT"
+version = "1.0.0"
+base {
+    archivesName.set("whisper4j")
+}
 
 repositories {
     mavenCentral()
@@ -26,4 +30,40 @@ tasks.shadowJar {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+
+    withSourcesJar()
+    withJavadocJar()
+}
+
+tasks.withType<JavaCompile>().configureEach {
+    options.encoding = "UTF-8"
+    options.release.set(17)
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            from(components["java"])
+        }
+    }
+
+    // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
+    repositories {
+        maven("https://mvn.devos.one/snapshots") {
+            name = "devOS"
+            credentials {
+                username = System.getenv()["MAVEN_USER"]
+                password = System.getenv()["MAVEN_PASS"]
+            }
+        }
+    }
 }
